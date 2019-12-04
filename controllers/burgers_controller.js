@@ -1,22 +1,28 @@
 var express = require("express");
-var burger = require("../models/burger")
+var burger = require("../models/burger.js")
+
 
 var router = express.Router();
-
+// console.log(burger.selectAll())
 //import the model (burger.js) to use its database function
 
-router.get("/", function (req, res) {
+
+router.get("/all", function (req, res) {
+    console.log('collecting data')
     burger.selectAll(function (data) {
         var hbsObject = {
             burgers: data
         };
-        console.log(hsbObject);
+
+        console.log(hbsObject);
         res.render("index", hbsObject);
     });
+
 });
 
 router.post("/api/burgers", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], [req.body.name, req.body.sleepy], function (result) {
+    console.log("this is: ", req.body)
+    burger.insertOne("burgers", "burger_name", req.body.burger_name, function (result) {
         res.json({ id: result.insertId });
     });
 });

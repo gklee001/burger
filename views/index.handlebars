@@ -3,7 +3,23 @@
 <h2> Eat Dah Burger </h2>
 
 <ul>
-    {{#each burger}}
-    {{#unless devoured}}
-    {{>}}
+    {{#each burgers}}
+    {{#unless devour}}
+    {{> burgers/burger-block devour=true}}
+    {{/unless}}
+    {{/each}}
 </ul>
+
+<h2></h2>
+
+
+
+<form action="/api/burgers" method="post">
+
+    <div class="form-group">
+
+        <input type="text" class="form-control" id="burgerdata" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Enter a burger you want to eat!</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

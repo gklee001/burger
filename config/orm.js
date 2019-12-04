@@ -1,7 +1,7 @@
 // import mysql connection.
 
-var connection = require("../config/connection");
-
+var connection = require("./connection.js");
+// console.log(connection)
 //helper function for sql syntax, we want to create an array of question marks - ["?", "?", "?"]. toString "?, ?, ?"
 
 function printQMarks(num) {
@@ -32,11 +32,15 @@ function objToSql(ob) {
 
 var orm = {
     selectAll: function (tableInput, cb) {
+        console.log("pulling")
         var queryString = "SELECT * FROM " + tableInput + ";";
+        console.log(queryString)
+        //console.log(connection.query(queryString))
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
+            console.log("this stops at  ", result)
             cb(result);
         });
     },
@@ -47,7 +51,7 @@ var orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += printQMarks(val.length);
+        queryString += toString(vals);
         queryString += ") ";
 
         console.log(queryString);

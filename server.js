@@ -12,9 +12,16 @@ var PORT = process.env.PORT || 8080
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
+
+//import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller")
+
+app.use(routes);
 //static directory to be served
-app.use(express.static("app/"))
+app.use(express.static("asset"))
 
 app.listen(PORT, function () {
     console.log("Server listening on: http://localhost:" + PORT)
