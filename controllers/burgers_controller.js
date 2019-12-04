@@ -21,24 +21,27 @@ router.get("/all", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-    console.log("this is: ", req.body)
-    burger.insertOne("burgers", "burger_name", req.body.burger_name, function (result) {
+    console.log("this is: ", Object.keys(req.body)[0])
+    burger.insertOne("burgers", "burger_name", Object.keys(req.body)[0], function (result) {
         res.json({ id: result.insertId });
     });
 });
 
 router.put("/api/burgers/:id", function (req, res) {
+    console.log("this is res", res)
+
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
     burger.updateOne(
         {
-            devoured: req.body.devoured
+            devoured: 1,
         },
         condition,
         function (result) {
-            if (result.changedRows === 0) {
+            if (result.changedRows == 0) {
                 return res.status(404).end();
             }
+            console.log("success")
             res.status(200).end();
         }
     );

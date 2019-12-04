@@ -9,7 +9,45 @@
     <title>Eat Da Burger</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     {{!-- <script src="../../models/burger.js"></script> --}}
-    <script src="./../../assets/js/burger.js"></script>
+    <script>
+        $(function () {
+            $("form").on("submit", function (event) {
+                event.preventDefault();
+
+                var newBurger = {
+                    burger_name: $("#burgerdata").val().trim()
+                };
+
+                //send the POST request.
+                $.ajax("/api/burgers", {
+                    type: "POST",
+                    data: $("#burgerdata").val().trim()
+                }).then(
+                    function () {
+                        console.log("created new burger");
+                        location.reload();
+                    }
+                );
+
+            })
+            $(".devour").on("click", function (event) {
+                var id = $(this).data("id");
+                console.log("I'm trying to get the id", id)
+                //send the delete request.
+                $.ajax("/api/burgers/" + id, {
+                    type: "put"
+                }).then(
+                    function () {
+                        console.log("delete burger", id);
+                        location.reload();
+                    }
+                );
+
+            });
+
+        })
+
+    </script>
 
 </head>
 

@@ -46,12 +46,12 @@ var orm = {
     },
     insertOne: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
-
+        console.log(typeof vals)
         queryString += " (";
-        queryString += cols.toString();
+        queryString += cols.toString() + ",devoured";
         queryString += ") ";
-        queryString += "VALUES (";
-        queryString += toString(vals);
+        queryString += "VALUES ('";
+        queryString += vals + "',false"
         queryString += ") ";
 
         console.log(queryString);
@@ -65,13 +65,14 @@ var orm = {
     updateOne: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
-        queryString += " SET";
+        queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
         connection.query(queryString, function (err, result) {
+            console.log("this is the results in orm.js", result)
             if (err) {
                 throw err;
             }
