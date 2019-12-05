@@ -4,8 +4,8 @@
 
 <ul>
     {{#each burgers}}
-    {{#unless burgers.devoured}}
-    {{> burgers/burger-block devour=burgers.devoured}}
+    {{#unless devour}}
+    {{> burgers/burger-block devour=true}}
     <!--handlebar templates
     https://code-maven.com/handlebars-conditionals -->
     {{/unless}}

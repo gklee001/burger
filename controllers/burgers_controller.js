@@ -14,7 +14,7 @@ router.get("/all", function (req, res) {
             burgers: data
         };
 
-        console.log("this is the data in bs.js", hbsObject.burgers);
+        console.log("this is the data in burgers_controller.js", hbsObject.burgers);
 
         res.render("index", hbsObject);
     });
