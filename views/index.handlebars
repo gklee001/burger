@@ -12,6 +12,14 @@
     {{/each}}
 </ul>
 
+<h2>These Burgers are in your tummy!</h2>
+<ul>
+    {{#each burgers}}
+    {{#if devour}}
+    {{> burgers/burger-block devour=false}}
+    {{/if}}
+    {{/each}}
+</ul>
 <!--<h2>Cats that are sleepy!</h2>
 
 <ul>
@@ -20,7 +28,7 @@
       {{> cats/cat-block sleep=false}}
     {{/if}}
   {{/each}}
-</ul>-->
+</ul>
 
 <h2></h2>
 
