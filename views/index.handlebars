@@ -4,7 +4,7 @@
 
 <ul>
     {{#each burgers}}
-    {{#unless devour}}
+    {{#unless devoured}}
     {{> burgers/burger-block devour=true}}
     <!--handlebar templates
     https://code-maven.com/handlebars-conditionals -->
@@ -15,7 +15,7 @@
 <h2>These Burgers are in your tummy!</h2>
 <ul>
     {{#each burgers}}
-    {{#if devour}}
+    {{#if devoured}}
     {{> burgers/burger-block devour=false}}
     {{/if}}
     {{/each}}
