@@ -4,7 +4,7 @@ var connection = require("./connection.js");
 // console.log(connection)
 //helper function for sql syntax, we want to create an array of question marks - ["?", "?", "?"]. toString "?, ?, ?"
 
-function printQuestionMarks(num) {
+function printQMarks(num) {
     var arr = []
         ;
     for (var i = 0; i < num; i++) {
