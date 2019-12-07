@@ -7,7 +7,7 @@ var router = express.Router();
 //import the model (burger.js) to use its database function
 
 
-router.get("/all", function (req, res) {
+router.get("/", function (req, res) {
     console.log('collecting data')
     burger.selectAll(function (data) {
         var hbsObject = {
