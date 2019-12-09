@@ -3,12 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    {{!-- <link rel="stylesheet" href="../../assets/css/style.css" type="text/css" /> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eat Da Burger</title>
     <script src="https://code.jquery.com/jquery.js"></script>
-    {{!-- <script src="../../models/burger.js"></script> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+    {{!-- {{#each css}}
+    <link rel="stylesheet" type='text/css' href="../../public/css/{{this}}">
+    {{/each}} --}}
+
+
+
+
     <script>
         $(function () {
             $("form").on("submit", function (event) {
@@ -32,7 +42,6 @@
             })
             $(".devour").on("click", function (event) {
                 var id = $(this).data("id");
-                console.log("I'm trying to get the id", id)
                 //send the delete request.
                 $.ajax("/api/burgers/" + id, {
                     type: "put"

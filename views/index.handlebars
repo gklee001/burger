@@ -1,51 +1,49 @@
-<h1> Burgers! </h1>
-
-<h2> Eat Dah Burger </h2>
-
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    {{> burgers/burger-block devour=true}}
-    <!--handlebar templates
-    https://code-maven.com/handlebars-conditionals -->
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>These Burgers are in your tummy!</h2>
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    {{> burgers/burger-block devour=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-<form>
-    <div class="form-group">
-        <input type="text" class="form-control" id="burgerdata" aria-describedby="emailHelp">
-        <small id="emailHelp" class="form-text text-muted">Enter a burger you want to eat!</small>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <h1> Play Burgers! </h1>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  </div>
 
-<!--<h2>Cats that are sleepy!</h2>
+  <div class="row no-gutters">
+    <div class="col-6">
+      <h2> On our Menu </h2>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2></h2>
-
-
-
-<form>
-    <div class="form-group">
-        <input type="text" class="form-control" id="burgerdata" aria-describedby="emailHelp">
-        <small id="emailHelp" class="form-text text-muted">Enter a burger you want to eat!</small>
+      <div class="menu">
+        <ul>
+          {{#each burgers}}
+          {{#unless devoured}}
+          {{> burgers/burger-block devour=true}}
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="col-6">
+      <div class="tummy">
+        <h2>These Burgers are in your tummy!</h2>
+        <ul>
+          {{#each burgers}}
+          {{#if devoured}}
+          {{> burgers/burger-block devour=false}}
+          {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class='col-lg-12'>
+    <div class="dahbutton">
+      <form>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="burgerdata" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">Enter a burger you want to eat!</small>
+        </div>
+        <button type="submit" class="btn btn-warning">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

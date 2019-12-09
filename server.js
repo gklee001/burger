@@ -9,11 +9,17 @@ var PORT = process.env.PORT || 8080
 
 //sets up the Express app to handle data parsing, middle handler
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
+app.use(express.static('public'));
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
+
 
 
 //import routes and give the server access to them.
